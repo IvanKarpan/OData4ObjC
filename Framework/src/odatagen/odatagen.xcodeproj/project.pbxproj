@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63636677113D2D6A00152236 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63636676113D2D6A00152236 /* libxml2.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		63636679113D2D7300152236 /* libxslt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63636678113D2D7300152236 /* libxslt.dylib */; };
 		63873124119842C4006C24FD /* ACSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 63873123119842C4006C24FD /* ACSUtil.m */; };
 		63873162119844B3006C24FD /* HTTPHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 63873161119844B3006C24FD /* HTTPHandler.m */; };
@@ -31,7 +30,6 @@
 		08FB7796FE84155DC02AAC07 /* odatagen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = odatagen.m; sourceTree = "<group>"; };
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32A70AAB03705E1F00C91783 /* odatagen_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = odatagen_Prefix.pch; sourceTree = "<group>"; };
-		63636676113D2D6A00152236 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		63636678113D2D7300152236 /* libxslt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxslt.dylib; path = usr/lib/libxslt.dylib; sourceTree = SDKROOT; };
 		63873122119842C4006C24FD /* ACSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSUtil.h; sourceTree = "<group>"; };
 		63873123119842C4006C24FD /* ACSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACSUtil.m; sourceTree = "<group>"; };
@@ -52,7 +50,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */,
-				63636677113D2D6A00152236 /* libxml2.dylib in Frameworks */,
 				63636679113D2D7300152236 /* libxslt.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,7 +64,6 @@
 				C6859EA2029092E104C91782 /* Documentation */,
 				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
-				63636676113D2D6A00152236 /* libxml2.dylib */,
 				63636678113D2D7300152236 /* libxslt.dylib */,
 			);
 			name = odatagen;
@@ -142,7 +138,7 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "odatagen" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -180,7 +176,6 @@
 		1DEB927508733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = stabs;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -188,7 +183,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = odatagen_Prefix.pch;
-				HEADER_SEARCH_PATHS = /Developer/SDKs/MacOSX10.6.sdk/usr/include/libxml2;
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -202,12 +196,10 @@
 		1DEB927608733DD40010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = stabs;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = odatagen_Prefix.pch;
-				HEADER_SEARCH_PATHS = /Developer/SDKs/MacOSX10.6.sdk/usr/include/libxml2;
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -221,16 +213,16 @@
 		1DEB927908733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /Developer/SDKs/MacOSX10.5.sdk/usr/include;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = "";
+				OTHER_LDFLAGS = "-lxml2";
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -238,15 +230,15 @@
 		1DEB927A08733DD40010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /Developer/SDKs/MacOSX10.5.sdk/usr/include;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.7;
+				OTHER_LDFLAGS = "-lxml2";
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
