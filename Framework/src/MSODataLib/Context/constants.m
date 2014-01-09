@@ -131,10 +131,11 @@ NSString* const Resource_EntityHeaderOnlyArray					= @"Second argument to SetEnt
 
     
 //definition for data service specific headers
-NSString* const Resource_MaxDataServiceVersion					= @"2.0";
+NSString* const Resource_MaxDataServiceVersion					= @"3.0";
 NSString* const Resource_DefaultDataServiceVersion				= @"1.0";
 NSString* const Resource_DataServiceVersion_1					= @"1.0";
 NSString* const Resource_DataServiceVersion_2					= @"2.0";
+NSString* const Resource_DataServiceVersion_3					= @"3.0";
     
 //definition of possible Accept and Content-Types headers    
 NSString* const Resource_Accept_ATOM							= @"application/atom+xml,application/xml";	    

@@ -1507,7 +1507,7 @@
 	
 	[headers setObject:[NSString stringWithString:@"UTF-8"] forKey:HttpRequestHeader_AcceptCharset];
 	[headers setObject:[NSString stringWithString:am_dataServiceVersion] forKey:@"m_dataServiceVersion"];
-	[headers setObject:[NSString stringWithString:Resource_DataServiceVersion_2] forKey:@"Maxm_dataServiceVersion"];
+	[headers setObject:[NSString stringWithString:Resource_DataServiceVersion_3] forKey:@"Maxm_dataServiceVersion"];
 	
 	if([aHttpVerb isEqualToString:HttpVerb_GET] == NO)
 	{

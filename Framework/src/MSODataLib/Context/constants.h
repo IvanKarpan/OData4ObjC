@@ -186,6 +186,7 @@ extern NSString* const HttpVerb_MERGE;
 	extern NSString* const Resource_DefaultDataServiceVersion;
 	extern NSString* const Resource_DataServiceVersion_1;
 	extern NSString* const Resource_DataServiceVersion_2;
+	extern NSString* const Resource_DataServiceVersion_3;
 
 	//definition of possible Accept and Content-Types headers    
 	extern NSString* const Resource_Accept_ATOM;    
