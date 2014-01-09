@@ -185,7 +185,7 @@
 		[self setBaseUri:aUri];
 		[self setCredentials:aCredential];
 		if([[aCredential getCredentialType] isEqualToString:@"AZURE"])
-			[self setDataServiceVersion:@"1.0"];
+			[self setDataServiceVersion:Resource_DefaultDataServiceVersion];
 		else
 			[self setDataServiceVersion:aDataServiceVersion];
 		[self setTimeOutInterval:30.0];

@@ -15,6 +15,7 @@
  limitations under the License.
  */
 
+#include "constants.h"
 #import "HttpBatchRequest.h"
 #import "HttpRequest.h"
 #import "HttpResponse.h"
@@ -46,7 +47,7 @@ credentialsInHeaders:(BOOL)isCredentialInHeaders context:(ObjectContext *)objCon
 		NSMutableDictionary *requestHeaders = [NSMutableDictionary dictionaryWithObjectsAndKeys:
 											    @"application/atom+xml,application/xml", @"Accept",
 											    batchBoundary, @"Content-Type", 
-											    @"1.0",@"DataServiceVersion", nil];
+											    Resource_DefaultDataServiceVersion,@"DataServiceVersion", nil];
 		
 		
 		NSArray *arrKeys = [headers allKeys];

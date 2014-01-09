@@ -15,6 +15,7 @@
  */
 
 #include <objc/message.h>
+#include "constants.h"
 #import "Utility.h"
 
 #define BINARY_SIZE 3
@@ -340,7 +341,7 @@ static NSString *const REQUEST_GET  = @"GET";
 					forKey: @"Content-Type"];	
 		[headers setObject: dataserviceversion
 					forKey: @"DataServiceVersion"];
-		[headers setObject: @"2.0"
+		[headers setObject: Resource_MaxDataServiceVersion
 					forKey: @"MaxDataServiceVersion"];	
 	}
 	else if([aMethodType isEqualToString:@"POST"])
@@ -353,7 +354,7 @@ static NSString *const REQUEST_GET  = @"GET";
 					forKey: @"Content-Type"];
 		[headers setObject: dataserviceversion
 					forKey: @"DataServiceVersion"];
-		[headers setObject: @"2.0"
+		[headers setObject: Resource_MaxDataServiceVersion
 					forKey: @"MaxDataServiceVersion"];
 	}
 	else if([aMethodType isEqualToString:@"MERGE"])
@@ -366,7 +367,7 @@ static NSString *const REQUEST_GET  = @"GET";
 					forKey: @"Content-Type"];
 		[headers setObject: dataserviceversion
 					forKey: @"DataServiceVersion"];
-		[headers setObject: @"2.0"
+		[headers setObject: Resource_MaxDataServiceVersion
 					forKey: @"MaxDataServiceVersion"];
 		[headers setObject: @"MERGE"
 					forKey: @"X-HTTP-Method"];
@@ -385,7 +386,7 @@ static NSString *const REQUEST_GET  = @"GET";
 					forKey: @"Content-Type"];
 		[headers setObject: dataserviceversion
 					forKey: @"DataServiceVersion"];
-		[headers setObject: @"2.0"
+		[headers setObject: Resource_MaxDataServiceVersion
 					forKey: @"MaxDataServiceVersion"];
 		[headers setObject: @"PUT"
 					forKey: @"X-HTTP-Method"];
@@ -401,7 +402,7 @@ static NSString *const REQUEST_GET  = @"GET";
 					forKey: @"Accept-Charset"];
 		[headers setObject: dataserviceversion
 					forKey: @"DataServiceVersion"];
-		[headers setObject: @"2.0"
+		[headers setObject: Resource_MaxDataServiceVersion
 					forKey: @"MaxDataServiceVersion"];
 		[headers setObject: @"DELETE"
 					forKey: @"X-HTTP-Method"];
@@ -416,7 +417,7 @@ static NSString *const REQUEST_GET  = @"GET";
 					forKey: @"Accept-Charset"];
 		[headers setObject: dataserviceversion
 					forKey: @"DataServiceVersion"];
-		[headers setObject: @"2.0"
+		[headers setObject: Resource_MaxDataServiceVersion
 					forKey: @"MaxDataServiceVersion"];	
 	}
 	else if([aMethodType isEqualToString:@"ADD"])
@@ -427,7 +428,7 @@ static NSString *const REQUEST_GET  = @"GET";
 					forKey: @"Accept-Charset"];
 		[headers setObject: dataserviceversion
 					forKey: @"DataServiceVersion"];
-		[headers setObject: @"2.0"
+		[headers setObject: Resource_MaxDataServiceVersion
 					forKey: @"MaxDataServiceVersion"];
 		[headers setObject: @"plain/text;charset=utf-8"
 					forKey: @"Content-type"];
@@ -442,7 +443,7 @@ static NSString *const REQUEST_GET  = @"GET";
 					forKey: @"Accept-Charset"];
 		[headers setObject: dataserviceversion
 					forKey: @"DataServiceVersion"];
-		[headers setObject: @"2.0"
+		[headers setObject: Resource_MaxDataServiceVersion
 					forKey: @"MaxDataServiceVersion"];
 		[headers setObject: @"plain/text;charset=utf-8"
 					forKey: @"Content-type"];
@@ -459,7 +460,7 @@ static NSString *const REQUEST_GET  = @"GET";
 					forKey: @"Accept-Charset"];
 		[headers setObject: dataserviceversion
 					forKey: @"DataServiceVersion"];
-		[headers setObject: @"2.0"
+		[headers setObject: Resource_MaxDataServiceVersion
 					forKey: @"MaxDataServiceVersion"];
 		[headers setObject: @"application/xml;charset=utf-8"
 					forKey: @"Content-type"];
@@ -478,7 +479,7 @@ static NSString *const REQUEST_GET  = @"GET";
 					forKey: @"Content-Type"];
 		[headers setObject: dataserviceversion
 					forKey: @"DataServiceVersion"];
-		[headers setObject: @"2.0"
+		[headers setObject: Resource_MaxDataServiceVersion
 					forKey: @"MaxDataServiceVersion"];
 	}
 	
