@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11BD1165187EFC7100683C4C /* objc_filename.xsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = ED2A09CD13A7681C00CB9125 /* objc_filename.xsl */; };
+		11BD1166187EFC7100683C4C /* objc_headers.xsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 849F384B12DB15830010140F /* objc_headers.xsl */; };
+		11BD1167187EFC7100683C4C /* objc_baseClasses.xsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 849F384C12DB15830010140F /* objc_baseClasses.xsl */; };
+		11BD1168187EFC7100683C4C /* objc_implementation.xsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 849F38A912DB1CE50010140F /* objc_implementation.xsl */; };
+		11BD1169187EFC7100683C4C /* copyrightInfo.xsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 849F38E712DB1F980010140F /* copyrightInfo.xsl */; };
 		63636679113D2D7300152236 /* libxslt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63636678113D2D7300152236 /* libxslt.dylib */; };
 		63873124119842C4006C24FD /* ACSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 63873123119842C4006C24FD /* ACSUtil.m */; };
 		63873162119844B3006C24FD /* HTTPHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 63873161119844B3006C24FD /* HTTPHandler.m */; };
@@ -15,6 +20,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		11BD1164187EFC5E00683C4C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				11BD1165187EFC7100683C4C /* objc_filename.xsl in CopyFiles */,
+				11BD1166187EFC7100683C4C /* objc_headers.xsl in CopyFiles */,
+				11BD1167187EFC7100683C4C /* objc_baseClasses.xsl in CopyFiles */,
+				11BD1168187EFC7100683C4C /* objc_implementation.xsl in CopyFiles */,
+				11BD1169187EFC7100683C4C /* copyrightInfo.xsl in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DD76F9E0486AA7600D96B5E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 8;
@@ -120,6 +139,7 @@
 			buildPhases = (
 				8DD76F990486AA7600D96B5E /* Sources */,
 				8DD76F9B0486AA7600D96B5E /* Frameworks */,
+				11BD1164187EFC5E00683C4C /* CopyFiles */,
 				8DD76F9E0486AA7600D96B5E /* CopyFiles */,
 			);
 			buildRules = (
@@ -177,7 +197,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = stabs;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -196,7 +216,8 @@
 		1DEB927608733DD40010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = stabs;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = odatagen_Prefix.pch;
