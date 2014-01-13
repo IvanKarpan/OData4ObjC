@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"xmlns:schema_1_0="http://schemas.microsoft.com/ado/2006/04/edm"xmlns:schema_1_1="http://schemas.microsoft.com/ado/2007/05/edm"xmlns:schema_1_2="http://schemas.microsoft.com/ado/2008/09/edm"xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"><xsl:output method="text"/><!-- Default service URI passed externally--><xsl:param name="DefaultServiceURI"/>
+<?xml version="1.0" encoding="utf-8"?><xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"xmlns:schema_1_0="http://schemas.microsoft.com/ado/2006/04/edm"xmlns:schema_1_1="http://schemas.microsoft.com/ado/2007/05/edm"xmlns:schema_2_0="http://schemas.microsoft.com/ado/2008/09/edm"xmlns:schema_3_0="http://schemas.microsoft.com/ado/2009/11/edm"xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"><xsl:output method="text"/><!-- Default service URI passed externally--><xsl:param name="DefaultServiceURI"/>
 <!-- Service NameSpace-->
-<xsl:variable name="service_namespace" select="concat(//schema_1_0:EntityType/../@Namespace, //schema_1_1:EntityType/../@Namespace, //schema_1_2:EntityType/../@Namespace)" />
+<xsl:variable name="service_namespace" select="concat(//schema_1_0:EntityType/../@Namespace, //schema_1_1:EntityType/../@Namespace, //schema_2_0:EntityType/../@Namespace, //schema_3_0:EntityType/../@Namespace)" />
 <xsl:variable name="modified_service_namespace">
 	<xsl:call-template name="cleanQuote">
 	<xsl:with-param name="string">
@@ -39,16 +39,16 @@
 #define DEFAULT_SERVICE_URL @"<xsl:value-of select="$DefaultServiceURI"/>"
 
 <xsl:apply-templates select="/edmx:Edmx/edmx:DataServices"/>
-<xsl:apply-templates select="/edmx:Edmx/edmx:DataServices/schema_1_0:Schema | /edmx:Edmx/edmx:DataServices/schema_1_1:Schema | /edmx:Edmx/edmx:DataServices/schema_1_2:Schema"/>
+<xsl:apply-templates select="/edmx:Edmx/edmx:DataServices/schema_1_0:Schema | /edmx:Edmx/edmx:DataServices/schema_1_1:Schema | /edmx:Edmx/edmx:DataServices/schema_2_0:Schema | /edmx:Edmx/edmx:DataServices/schema_3_0:Schema"/>
 </xsl:template>
-<xsl:template match="/edmx:Edmx/edmx:DataServices/schema_1_0:Schema | /edmx:Edmx/edmx:DataServices/schema_1_1:Schema | /edmx:Edmx/edmx:DataServices/schema_1_2:Schema">
-<xsl:for-each select="schema_1_0:ComplexType | schema_1_1:ComplexType | schema_1_2:ComplexType">
+<xsl:template match="/edmx:Edmx/edmx:DataServices/schema_1_0:Schema | /edmx:Edmx/edmx:DataServices/schema_1_1:Schema | /edmx:Edmx/edmx:DataServices/schema_2_0:Schema | /edmx:Edmx/edmx:DataServices/schema_3_0:Schema">
+<xsl:for-each select="schema_1_0:ComplexType | schema_1_1:ComplexType | schema_2_0:ComplexType | schema_3_0:ComplexType">
 @class <xsl:value-of select="$modified_service_namespace"/>_<xsl:value-of select="@Name"/>;
 </xsl:for-each>
-<xsl:for-each select="schema_1_0:ComplexType | schema_1_1:ComplexType | schema_1_2:ComplexType">
+<xsl:for-each select="schema_1_0:ComplexType | schema_1_1:ComplexType | schema_2_0:ComplexType | schema_3_0:ComplexType">
 <xsl:apply-templates select="."/>
 </xsl:for-each>
-<xsl:for-each select="schema_1_0:EntityType | schema_1_1:EntityType | schema_1_2:EntityType">
+<xsl:for-each select="schema_1_0:EntityType | schema_1_1:EntityType | schema_2_0:EntityType | schema_3_0:EntityType">
 <xsl:apply-templates select="."/></xsl:for-each>
 </xsl:template>
 
@@ -65,11 +65,11 @@
 </xsl:template>
 
 <!-- Generate ComplexType interface -->
-<xsl:template match="schema_1_0:ComplexType | schema_1_1:ComplexType | schema_1_2:ComplexType">
+<xsl:template match="schema_1_0:ComplexType | schema_1_1:ComplexType | schema_2_0:ComplexType | schema_3_0:ComplexType">
 /**
  * @interface:<xsl:value-of select="@Name"/>
- <xsl:for-each select="schema_1_0:Key | schema_1_1:Key | schema_1_2:Key">
- <xsl:for-each select="schema_1_0:PropertyRef | schema_1_1:PropertyRef | schema_1_2:PropertyRef">
+ <xsl:for-each select="schema_1_0:Key | schema_1_1:Key | schema_2_0:Key | schema_3_0:Key">
+ <xsl:for-each select="schema_1_0:PropertyRef | schema_1_1:PropertyRef | schema_2_0:PropertyRef | schema_3_0:PropertyRef">
  * @key:<xsl:value-of select="@Name"/>
  </xsl:for-each>
  </xsl:for-each>
@@ -81,7 +81,7 @@
  </xsl:if>
  */
 @interface <xsl:value-of select="$modified_service_namespace"/>_<xsl:value-of select="@Name"/> :ODataObject
-{<xsl:for-each select="schema_1_0:Property | schema_1_1:Property | schema_1_2:Property">
+{<xsl:for-each select="schema_1_0:Property | schema_1_1:Property | schema_2_0:Property | schema_3_0:Property">
 	/**
 	* @Type:ComplexTypeProperty<xsl:if test="@Nullable = 'false'">
 	* NotNullable</xsl:if>
@@ -115,7 +115,7 @@
 	<xsl:value-of select="@Name"/>;
 	</xsl:for-each>
 }
-<xsl:for-each select="schema_1_0:Property | schema_1_1:Property | schema_1_2:Property">
+<xsl:for-each select="schema_1_0:Property | schema_1_1:Property | schema_2_0:Property | schema_3_0:Property">
 @property ( nonatomic , <xsl:if test="@Type = 'Edm.String'">retain , getter=get<xsl:value-of select="@Name"/> , setter=set<xsl:value-of select="@Name"/>: ) NSString *m_</xsl:if>
     <xsl:if test="@Type = 'Edm.Int32'">retain , getter=get<xsl:value-of select="@Name"/> , setter=set<xsl:value-of select="@Name"/>: )NSNumber *m_</xsl:if>
     <xsl:if test="@Type = 'Edm.Int16'">retain , getter=get<xsl:value-of select="@Name"/> , setter=set<xsl:value-of select="@Name"/>: )NSNumber *m_</xsl:if>
@@ -135,15 +135,15 @@
 
 @end
 </xsl:template>
-<xsl:template match="schema_1_0:EntityType | schema_1_1:EntityType | schema_1_2:EntityType">
+<xsl:template match="schema_1_0:EntityType | schema_1_1:EntityType | schema_2_0:EntityType | schema_3_0:EntityType">
 <xsl:if test="not(@BaseType)"><xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'" />
 <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'" />
-<xsl:variable name="service_namespace" select="concat(//schema_1_0:EntityType/../@Namespace, //schema_1_1:EntityType/../@Namespace, //schema_1_2:EntityType/../@Namespace)" />
+<xsl:variable name="service_namespace" select="concat(//schema_1_0:EntityType/../@Namespace, //schema_1_1:EntityType/../@Namespace, //schema_2_0:EntityType/../@Namespace, //schema_3_0:EntityType/../@Namespace)" />
 /**
  * @interface:<xsl:value-of select="@Name"/>
  * @Type:EntityType
- <xsl:for-each select="schema_1_0:Key | schema_1_1:Key | schema_1_2:Key">
- <xsl:for-each select="schema_1_0:PropertyRef | schema_1_1:PropertyRef | schema_1_2:PropertyRef">
+ <xsl:for-each select="schema_1_0:Key | schema_1_1:Key | schema_2_0:Key | schema_3_0:Key">
+ <xsl:for-each select="schema_1_0:PropertyRef | schema_1_1:PropertyRef | schema_2_0:PropertyRef | schema_3_0:PropertyRef">
  * @key:<xsl:value-of select="@Name"/>
  </xsl:for-each>
  </xsl:for-each>* <xsl:if test="@BaseType">@BaseClass:<xsl:value-of select="substring-after(@BaseType, concat($service_namespace, '.'))"/></xsl:if>
@@ -157,7 +157,7 @@
  */
 @interface <xsl:value-of select="$modified_service_namespace"/>_<xsl:value-of select="@Name"/> : <xsl:choose><xsl:when test="@BaseType"><xsl:value-of select="substring-after(@BaseType, concat($service_namespace, '.'))"/></xsl:when><xsl:otherwise>ODataObject</xsl:otherwise></xsl:choose>
 {
-	<xsl:for-each select="schema_1_0:Property | schema_1_1:Property | schema_1_2:Property">
+	<xsl:for-each select="schema_1_0:Property | schema_1_1:Property | schema_2_0:Property | schema_3_0:Property">
 	/**
 	* @Type:EntityProperty<xsl:if test="@Nullable = 'false'">
 	* NotNullable</xsl:if>
@@ -192,7 +192,7 @@
 	<xsl:value-of select="@Name"/>;
 	</xsl:for-each>
 
-	<xsl:for-each select="schema_1_0:NavigationProperty | schema_1_1:NavigationProperty | schema_1_2:NavigationProperty">
+	<xsl:for-each select="schema_1_0:NavigationProperty | schema_1_1:NavigationProperty | schema_2_0:NavigationProperty | schema_3_0:NavigationProperty">
 	/**
 	* @Type:NavigationProperty
 	* @Relationship:<xsl:value-of select="substring-after(@Relationship, concat($service_namespace, '.'))"/>
@@ -202,7 +202,7 @@
 	NSMutableArray *m_<xsl:value-of select="@Name"/>;
 	</xsl:for-each>
 }
-<xsl:for-each select="schema_1_0:Property | schema_1_1:Property | schema_1_2:Property">
+<xsl:for-each select="schema_1_0:Property | schema_1_1:Property | schema_2_0:Property | schema_3_0:Property">
 @property ( nonatomic , <xsl:if test="@Type = 'Edm.String'">retain , getter=get<xsl:value-of select="@Name"/> , setter=set<xsl:value-of select="@Name"/>: ) NSString *m_</xsl:if>
     <xsl:if test="@Type = 'Edm.Int32'">retain , getter=get<xsl:value-of select="@Name"/> , setter=set<xsl:value-of select="@Name"/>: )NSNumber *m_</xsl:if>
     <xsl:if test="@Type = 'Edm.Int16'">retain , getter=get<xsl:value-of select="@Name"/> , setter=set<xsl:value-of select="@Name"/>: )NSNumber *m_</xsl:if>
@@ -220,10 +220,10 @@
     <xsl:if test="contains(@Type, $service_namespace)"><xsl:if test="contains(@Type,@ComplexType)"> retain , getter=get<xsl:value-of select="@Name"/> , setter=set<xsl:value-of select="@Name"/>: )<xsl:value-of select="$modified_service_namespace"/>_<xsl:value-of select="substring-after(@Type,concat($service_namespace, '.'))"/> *m_</xsl:if></xsl:if>
 <xsl:value-of select="@Name"/>;</xsl:for-each>
 
-<xsl:for-each select="schema_1_0:NavigationProperty | schema_1_1:NavigationProperty | schema_1_2:NavigationProperty">
+<xsl:for-each select="schema_1_0:NavigationProperty | schema_1_1:NavigationProperty | schema_2_0:NavigationProperty | schema_3_0:NavigationProperty">
 @property ( nonatomic , retain , getter=get<xsl:value-of select="@Name"/> , setter=set<xsl:value-of select="@Name"/>: )NSMutableArray *m_<xsl:value-of select="@Name"/>;</xsl:for-each>
 
-+ (id) Create<xsl:value-of select="@Name"/><xsl:if test="schema_1_0:Property[@Nullable = 'false'] | schema_1_1:Property[@Nullable = 'false'] | schema_1_2:Property[@Nullable = 'false']">With<xsl:for-each select="schema_1_0:Property[@Nullable = 'false'] | schema_1_1:Property[@Nullable = 'false'] | schema_1_2:Property[@Nullable = 'false']"><xsl:value-of select="translate(@Name, $uppercase, $smallcase)"/>:(<xsl:if test="@Type = 'Edm.String'">NSString *</xsl:if><xsl:if test="@Type = 'Edm.Int32'">NSNumber *</xsl:if><xsl:if test="@Type = 'Edm.Int16'">NSNumber *</xsl:if><xsl:if test="@Type = 'Edm.Int64'">NSNumber *</xsl:if>
++ (id) Create<xsl:value-of select="@Name"/><xsl:if test="schema_1_0:Property[@Nullable = 'false'] | schema_1_1:Property[@Nullable = 'false'] | schema_2_0:Property[@Nullable = 'false'] | schema_3_0:Property[@Nullable = 'false']">With<xsl:for-each select="schema_1_0:Property[@Nullable = 'false'] | schema_1_1:Property[@Nullable = 'false'] | schema_2_0:Property[@Nullable = 'false'] | schema_3_0:Property[@Nullable = 'false']"><xsl:value-of select="translate(@Name, $uppercase, $smallcase)"/>:(<xsl:if test="@Type = 'Edm.String'">NSString *</xsl:if><xsl:if test="@Type = 'Edm.Int32'">NSNumber *</xsl:if><xsl:if test="@Type = 'Edm.Int16'">NSNumber *</xsl:if><xsl:if test="@Type = 'Edm.Int64'">NSNumber *</xsl:if>
 <xsl:if test="@Type = 'Edm.Binary'">NSData *</xsl:if>
 <xsl:if test="@Type = 'Edm.Decimal'">NSDecimalNumber *</xsl:if>
 <xsl:if test="@Type = 'Edm.Boolean'">ODataBool *</xsl:if>
